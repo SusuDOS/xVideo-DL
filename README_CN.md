@@ -25,6 +25,7 @@ https://xvideos.com H 片命令行下载工具
 - [X] 多线程下载，拉满带宽！
 - [x] 默认下载最高清视频
 
+
 ## 使用说明
 
 ### 安装依赖
@@ -33,11 +34,12 @@ https://xvideos.com H 片命令行下载工具
 - 建议使用虚拟环境安装pip,建议安装anaconda.
 - 安装 yt-dlp或者youtube-dl，请使用github代码库手动安装
 - 注册 https://xvideo.com 账号，登录并拷贝 Cookie（必须有 `session_token=xxx`），首次使用时根据提示粘贴即可
+- Cookie位置在 ~/.xvideos/cookie (or C:\Users\USER\.xvideos\cookie).
 
 ### 安装工具 `yt-dlp` 和 `xvideos-dl`
 
 ```bash
-conda create -name downvideo python=3.8
+conda create -n downvideo python=3.8
 conda activate downvideo
 git clone https://github.com/yt-dlp/yt-dlp.git
 cd yt-dlp && pip install .
