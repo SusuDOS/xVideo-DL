@@ -84,6 +84,10 @@ def main(
                 videos = []
                 videos = get_videos_from_user_page(url, "0", c.AMATEUR_CHANNEL_API, videos)
                 videos_to_download.extend(videos)
+            elif "/model-channels/" in url:
+                videos = []
+                videos = get_videos_from_user_page(url, "0", c.MODEL_CHANNEL_API, videos)
+                videos_to_download.extend(videos)                
             elif "/favorite/" in url:
                 pid = parse_playlist_id(url)
                 videos = get_videos_by_playlist_id(pid, reset_cookie)
@@ -105,8 +109,7 @@ def main(
         subCallArray5=[]
         subCallArray6=[]
         subCallArray7=[]
-        subCallArray8=[]        
-        
+        subCallArray8=[]
         
         for i in range(0,total):
             if(i%4==0):
