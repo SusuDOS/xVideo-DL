@@ -7,6 +7,7 @@ PLAYLIST_API = HOST + "/api/playlists/list/{pid}"
 CHANNEL_API = HOST + "/channels/{u}/activity/straight/{aid}"
 AMATEUR_CHANNEL_API = HOST + "/amateur-channels/{u}/activity/straight/{aid}"
 MODEL_CHANNEL_API = HOST + "/model-channels/{u}/activity/straight/{aid}"
+PORNSTAR_CHANNEL_API = HOST + "/pornstar-channels/{u}/activity/straight/{aid}"
 VIDEO_API = HOST + "/video-download/{vid}/"
 HAS_MP4_RESOUCE = ["360p", "250p"]
 TIMEOUT = 15  # seconds

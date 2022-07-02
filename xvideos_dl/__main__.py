@@ -87,7 +87,11 @@ def main(
             elif "/model-channels/" in url:
                 videos = []
                 videos = get_videos_from_user_page(url, "0", c.MODEL_CHANNEL_API, videos)
-                videos_to_download.extend(videos)                
+                videos_to_download.extend(videos)
+            elif "/pornstar-channels/" in url:
+                videos = []
+                videos = get_videos_from_user_page(url, "0", c.PORNSTAR_CHANNEL_API, videos)
+                videos_to_download.extend(videos)               
             elif "/favorite/" in url:
                 pid = parse_playlist_id(url)
                 videos = get_videos_by_playlist_id(pid, reset_cookie)
