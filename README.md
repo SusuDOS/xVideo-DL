@@ -239,7 +239,7 @@ which is equivalent to:
 make docker VERSION=latest
 ```
 
-More information [here](https://github.com/lonsty/xvideos-dl/tree/master/docker).
+More information [here](https://github.com/SusuDOS/xvideos-dl/tree/master/docker).
 
 </p>
 </details>
