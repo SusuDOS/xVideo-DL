@@ -44,7 +44,9 @@ Cookie is stored in *~/.xvideos/cookie* (or *C:\Users\USER\\.xvideos\cookie*).
 - Install `xvideos-dl` and `yt-dlp`
 
 ```bash
-conda create -name downvideo python=3.8
+# install ananconda
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+conda create -n downvideo python=3.8
 conda activate downvideo
 git clone https://github.com/yt-dlp/yt-dlp.git
 cd yt-dlp && pip install .
@@ -52,6 +54,7 @@ cd yt-dlp && pip install .
 # or
 cd yt-dlp && python setup.py install --force
 
+# install and update xVideo-DL
 git clone https://github.com/SusuDOS/xVideo-DL.git
 cd xVideo-DL && pip install .
 ```

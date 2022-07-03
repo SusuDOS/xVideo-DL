@@ -22,8 +22,9 @@ https://xvideos.com H 片命令行下载工具
 - [X] 下载收藏夹中的所有视频（需收藏夹页的 URL）
 - [X] 下载用户上传的所有视频（需用户首页的 URL）
 - [X] 下载频道发布的所有视频（需频道首页的 URL）
-- [X] 多线程下载，拉满带宽！
+- [X] 多线程下载，拉满带宽
 - [x] 默认下载最高清视频
+- [x] 错误默认不退出，只跳过视频
 
 
 ## 使用说明
@@ -47,6 +48,7 @@ cd yt-dlp && pip install .
 # or
 cd yt-dlp && python setup.py install --force
 
+# 安装，升级方式一样
 git clone https://github.com/SusuDOS/xVideo-DL.git
 cd xVideo-DL && pip install .
 ```
