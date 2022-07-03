@@ -2,21 +2,21 @@
 
 <div align="center">
 
-[![Build status](https://github.com/lonsty/xvideos-dl/workflows/build/badge.svg?branch=master&event=push)](https://github.com/lonsty/xvideos-dl/actions?query=workflow%3Abuild)
+[![Build status](https://github.com/SusuDOS/xvideos-dl/workflows/build/badge.svg?branch=master&event=push)](https://github.com/SusuDOS/xvideos-dl/actions?query=workflow%3Abuild)
 [![Python Version](https://img.shields.io/pypi/pyversions/xvideos-dl.svg)](https://pypi.org/project/xvideos-dl/)
-[![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/lonsty/xvideos-dl/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
+[![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/SusuDOS/xvideos-dl/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
-[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/lonsty/xvideos-dl/blob/master/.pre-commit-config.yaml)
-[![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/lonsty/xvideos-dl/releases)
-[![License](https://img.shields.io/github/license/lonsty/xvideos-dl)](https://github.com/lonsty/xvideos-dl/blob/master/LICENSE)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/SusuDOS/xvideos-dl/blob/master/.pre-commit-config.yaml)
+[![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/SusuDOS/xvideos-dl/releases)
+[![License](https://img.shields.io/github/license/SusuDOS/xvideos-dl)](https://github.com/SusuDOS/xvideos-dl/blob/master/LICENSE)
 
 CLI to download videos from https://xvideos.com
 
 </div>
 
-<div align="center"><a href="https://github.com/lonsty/xvideos-dl/blob/master/README_CN.md">中文文档</a></div>
+<div align="center"><a href="https://github.com/SusuDOS/xvideos-dl/blob/master/README_CN.md">中文文档</a></div>
 
 ## Features
 
@@ -36,7 +36,7 @@ CLI to download videos from https://xvideos.com
 - [`ffmpeg`](https://ffmpeg.org/download.html)
   - Ubuntu/Debian: `sudo apt install ffmpeg`
   - MacOS: `brew install ffmpeg`
-  - Windows: refer this [issue](https://github.com/lonsty/xvideos-dl/issues/86)
+  - Windows: refer this [issue](https://github.com/SusuDOS/xvideos-dl/issues/86)
 - `Cookie`: When you run it for the first time, you will be prompted to enter the cookie, log in https://xvideos.com with your account, copy and paste a long string of cookie (there are many key-value pairs in the cookie, and `session_token=xxx` this pair must exist), then enjoy it.
 
 Cookie is stored in *~/.xvideos/cookie* (or *C:\Users\USER\\.xvideos\cookie*).
