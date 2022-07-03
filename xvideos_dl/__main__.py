@@ -2,10 +2,12 @@
 from typing import List
 
 import sys
+import os
 from enum import Enum
 import subprocess
 import threading
 import time
+import re
 
 import typer
 from cursor import HiddenCursor
@@ -29,7 +31,30 @@ app = typer.Typer(
 )
 console = Console()
 CountProcess = 0
+downloadPath = " "
 
+###############构建下载################
+def parse_downpath(index: str) -> str:
+    return get_from_string(r"(?<=profiles/|channels/).+(?=/*)", index.strip())
+
+def get_from_string(pattern: str, string: str) -> str:
+    find = re.search(pattern, string)
+    if not find:
+        return 
+    return find.group()
+
+def getPath(is_downloadPath:str):
+    global downloadPath
+    if(is_downloadPath==None):
+        downloadPath = "NewOthers"
+        line = 'mkdir -p NewOthers'
+        subprocess.call([line],shell=True)
+        # print(os.environ['PWD'])
+    else:
+        line = 'mkdir -p {}'.format(is_downloadPath)
+        downloadPath = is_downloadPath
+        subprocess.call([line],shell=True)
+###############构建下载################
 
 class Quality(str, Enum):
     high = "high"
@@ -68,10 +93,15 @@ def main(
         help="Prints the version of the xvideos-dl package.",
     ),
 ):
-    """CLI to download videos from https://xvideos.com"""
+    """CLI to download videos from https://xvideos.com"""   
+
     videos_to_download = []
     try:
         for url in urls:
+            ###############构建下载路径################    
+            is_downloadPath = parse_downpath(url)
+            getPath(is_downloadPath)
+            ###############构建下载路径################
             if "/profiles/" in url:
                 videos = []
                 videos = get_videos_from_user_page(url, "0", c.USER_UPLOAD_API, videos)
@@ -133,15 +163,15 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = "yt-dlp {}".format(item)
-                subprocess.call([commandString],shell=True)            
-
+                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
+                subprocess.call([commandString],shell=True)
+                
         def subCall6():
             for item in subCallArray6:
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = "yt-dlp {}".format(item)
+                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)  
             
         def subCall7():
@@ -149,7 +179,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item: {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = "yt-dlp {}".format(item)
+                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)            
 
         def subCall8():
@@ -157,7 +187,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = "yt-dlp {}".format(item)
+                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)
                 
         # 多线程下载启动
