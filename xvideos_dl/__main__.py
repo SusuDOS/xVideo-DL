@@ -163,7 +163,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
+                commandString = 'yt-dlp -P {} -o "%(title)s.mp4" --concurrent-fragments 8 --throttled-rate 128K {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)
                 
         def subCall6():
@@ -171,7 +171,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
+                commandString = 'yt-dlp -P {} -o "%(title)s.mp4" --concurrent-fragments 8 --throttled-rate 128K {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)  
             
         def subCall7():
@@ -179,7 +179,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item: {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
+                commandString = 'yt-dlp -P {} -o "%(title)s.mp4" --concurrent-fragments 8 --throttled-rate 128K {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)            
 
         def subCall8():
@@ -187,7 +187,7 @@ def main(
                 global CountProcess
                 CountProcess += 1
                 print(">>>>>>>>> Total item {} >>>>>>>>> Current: {} >>>>>>>>>".format(total,CountProcess))
-                commandString = 'yt-dlp -P {} {}/'.format(downloadPath,item)
+                commandString = 'yt-dlp -P {} -o "%(title)s.mp4" --concurrent-fragments 8 --throttled-rate 128K {}/'.format(downloadPath,item)
                 subprocess.call([commandString],shell=True)
                 
         # 多线程下载启动
