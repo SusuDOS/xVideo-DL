@@ -127,3 +127,103 @@ http://nat:53003//filename
 ```bash
 nat:53004>>>>nat-vps:52004>>>>store:sshport
 ```
+
+## Disable & enable Ipv6
+
+### 可以参考如下：[https://linux.cn/article-12689-1.html](https://linux.cn/article-12689-1.html "也可以参看具体配置！")
+
+```bash
+# 查看ipv6，开启时候有inet6信息，禁用则没有！
+ip a
+
+# 禁用ipv6
+# 临时禁用
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+
+# 永久禁用
+vi /etc/sysctl.conf
+
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+
+# 修改生效
+sysctl -p
+
+# 启用ipv6
+# 临时启用
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
+
+# 永久启用
+vi /etc/sysctl.conf
+
+net.ipv6.conf.all.disable_ipv6=0
+net.ipv6.conf.default.disable_ipv6=0
+net.ipv6.conf.lo.disable_ipv6=0
+
+# 生效
+sysctl -p
+```
+
+正常情况下有效，无需重启！！！！备注：若上面方式仍然在重启后ipv6生效，没有被禁用掉，则：
+
+```bash
+vim /etc/rc.local
+
+# 追加内容，注意有:exit 0
+/etc/sysctl.d
+/etc/init.d/procps restart
+exit 0
+
+# 修改权限
+chmod 755 /etc/rc.local
+
+# 重启电脑
+reboot
+```
+### 关于GRUB方式
+
+使用上面的方式可以正常实现，可以使用第二种这种方式实现，建议上面的那种！
+
+```bash
+# vim /etc/default/grub
+>>>>>>change >>>>>>>>
+GRUB_CMDLINE_LINUX_DEFAULT="splash netcfg/do_not_use_netplan=true net.ifnames=0 biosdevname=0"
+GRUB_CMDLINE_LINUX=""
+
+>>>>>>changeed>>>>>>>>
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash ipv6.disable=1"
+GRUB_CMDLINE_LINUX="ipv6.disable=1"
+
+# 生效
+update-grub
+
+## 若上述命令不存在则：
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# finally reboot vps
+reboot
+```
+
+## Linux下Java环境
+
+```
+# 下载解压
+wget http://170.178.192.228/jdk-8u333-linux-x64.tar.gz
+tar -xzvf jdk-8u333-linux-x64.tar.gz -C /usr/java/
+
+# 配置环境变量,尽量在EXPORT...后面，不崽应该也没关系.
+vim /etc/profile
+
+
+export JAVA_HOME=/usr/java/jdk1.8.0_333
+export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib
+export PATH=$JAVA_HOME/bin:$PATH
+
+# 刷新环境
+source /etc/profile
+```
